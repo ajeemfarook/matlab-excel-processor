@@ -72,6 +72,62 @@ matlab-excel-processor/
 * MATLAB **R2016b or later**
 * Statistics and Machine Learning Toolbox (for `quantile` function)
 
+
+📝 Pipeline Workflow
+Bash
+
+Copy
+┌─────────────────────────────────────────────────────────┐
+│                    INPUT FOLDER                         │
+│              (Multiple Excel files)                     │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│  1. READ EXCEL FILE                                     │
+│     - Load data with original headers                   │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│  2. DATA CLEANING                                       │
+│     - Replace '.' with ',' (except columns A & B)        │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│  3. PLANE SEGMENTATION                                  │
+│     - Detect plane values in columns AP & AQ            │
+│     - Segment data by first occurrence of each plane    │
+│     - Insert empty rows between segments                │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│  4. STATISTICAL ANALYSIS                                │
+│     - Compute Mean, SD, Median, Q1, Q3, IQR              │
+│     - For each segment                                  │
+│     - For columns T (Left) and AK (Right)               │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│                    OUTPUT FOLDER                         │
+│     ┌─────────────┬──────────────┬────────────┐         │
+│     │  Original   │   Cleaned    │ Statistics │         │
+│     │    Data     │    Data      │            │         │
+│     └─────────────┴──────────────┴────────────┘         │
+└─────────────────────────────────────────────────────────┘
+📌 Example
+Input file: data_file.xlsx
+
+Processing:
+
+Detects plane values (0.58, 0.81, 1.30, 0.45) in columns AP & AQ
+Creates 4 segments based on first occurrence
+Inserts empty rows between segments
+Computes statistics for each segment
+
 ---
 
 ## 🚀 Usage
