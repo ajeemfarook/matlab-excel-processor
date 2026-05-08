@@ -22,7 +22,7 @@ Each Excel file is processed independently and exported with structured results.
 
 * 🧹 **Data Cleaning**
 
-  * Converts decimal format (`.` → `,`) for European compatibility
+  * Converts decimal format (`.` → `,`) 
   * Preserves original dataset
   * Excludes columns **A & B**
 
