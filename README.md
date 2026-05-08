@@ -58,7 +58,7 @@ matlab-excel-processor/
 ├── batch_excel_processor.m
 ├── README.md
 ├── LICENSE
-├── .gitignore
+├── stat_function.m
 ├── input/
 │   └── .gitkeep
 ├── output/
