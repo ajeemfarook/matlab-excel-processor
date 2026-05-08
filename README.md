@@ -6,11 +6,11 @@ Automated MATLAB pipeline for batch processing Excel files with **data cleaning*
 
 ## 📌 Overview
 
-This project processes multiple Excel files automatically using a structured pipeline:
+This project provides a fully automated workflow:
 
 **Input Folder → Data Cleaning → Plane Segmentation → Statistical Analysis → Output Folder**
 
-Each Excel file is handled independently and exported with organized results.
+Each Excel file is processed independently and exported with structured results.
 
 ---
 
@@ -18,22 +18,22 @@ Each Excel file is handled independently and exported with organized results.
 
 * 🔁 **Batch Processing**
 
-  * Automatically processes all `.xlsx` files in a folder
+  * Automatically processes all `.xlsx` files in the input folder
 
 * 🧹 **Data Cleaning**
 
-  * Converts decimal format from `.` to `,` (European format)
-  * Preserves original dataset
+  * Converts decimal format (`.` → `,`) for European compatibility
+  * Keeps original data unchanged
 
 * 📊 **Plane Segmentation**
 
-  * Detects and separates data based on plane values:
+  * Detects plane values:
 
     ```
     0.45, 0.58, 0.81, 1.3
     ```
   * Uses columns **AP** and **AQ**
-  * Inserts empty rows between segments
+  * Separates segments with empty rows
 
 * 📈 **Statistical Analysis**
 
@@ -44,45 +44,74 @@ Each Excel file is handled independently and exported with organized results.
     * Median
     * Quartiles (Q1, Q3)
     * Interquartile Range (IQR)
-  * Applied on:
+  * Applied to:
 
     * Column **T** (Left)
     * Column **AK** (Right)
+
+* 🏗️ **Automated Project Setup**
+
+  * One command generates full project structure
 
 ---
 
 ## 📁 Project Structure
 
-```
+```bash
 matlab-excel-processor/
-├── batch_excel_processor.m
-├── README.md
-├── LICENSE
-├── stat_functions.m
-├── input/
+│
+├── setup_project.m              # Setup script (run once)
+├── batch_excel_processor.m      # Main processing script
+├── README.md                    # Documentation
+├── LICENSE                      # MIT License
+├── .gitignore                   # Git ignore rules
+│
+├── input/                       # Place Excel files here
 │   └── .gitkeep
-├── output/
-│   └── .gitkeep
+│
+└── output/                      # Processed files appear here
+    └── .gitkeep
 ```
 
 ---
 
-## ⚙️ Requirements
+## 🏗️ Project Setup (Automated)
 
-* MATLAB **R2016b or later**
-* Statistics and Machine Learning Toolbox (for `quantile` function)
+You can automatically create the full project structure using the setup script.
+
+### Run in MATLAB:
+
+```matlab
+setup_project()
+```
+
+This will generate:
+
+* Required folders (`input/`, `output/`)
+* `.gitignore`
+* `README.md`
+* `LICENSE`
+* Main processing script
 
 ---
 
 ## 🚀 Usage
 
-### 1. Add Input Files
+### Step 1: Setup Project (Run Once)
 
-Place your Excel files (`.xlsx`) inside the `input/` folder.
+```matlab
+setup_project()
+```
 
 ---
 
-### 2. Run the Script in MATLAB
+### Step 2: Add Input Files
+
+Place your `.xlsx` files inside the `input/` folder.
+
+---
+
+### Step 3: Run Processing Pipeline
 
 ```matlab
 batch_excel_processor()
@@ -90,23 +119,23 @@ batch_excel_processor()
 
 ---
 
-### 3. Get Results
+### Step 4: Get Results
 
 Processed files will appear in the `output/` folder.
 
 Each output file contains:
 
-| Sheet Name    | Description                  |
-| ------------- | ---------------------------- |
-| Original Data | Raw input data               |
-| Cleaned Data  | Processed + segmented data   |
-| Statistics    | Computed metrics per segment |
+| Sheet Name    | Description                      |
+| ------------- | -------------------------------- |
+| Original Data | Raw input data                   |
+| Cleaned Data  | Cleaned + segmented data         |
+| Statistics    | Segment-wise statistical results |
 
 ---
 
 ## ⚙️ Configuration
 
-You can modify parameters inside the script:
+You can modify parameters inside `batch_excel_processor.m`:
 
 ```matlab
 input_folder = 'input/';
@@ -122,20 +151,51 @@ COL_AK = 37;  % Column AK (Right)
 
 ---
 
-## ⚠️ Notes
+## 📊 Statistical Details
+
+For each detected segment:
+
+### Left (Column T)
+
+* Mean
+* Standard Deviation
+* Median
+* Q1, Q3
+* IQR = Q3 − Q1
+
+### Right (Column AK)
+
+* Mean
+* Standard Deviation
+* Median
+* Q1, Q3
+* IQR = Q3 − Q1
+
+---
+
+## ⚠️ Important Notes
 
 * Segmentation is based on **first occurrence of plane values**
 * Row boundaries are **automatically detected**
 * Each file is processed independently
-* Original data remains unchanged
+* Original data is preserved
+* Empty rows are inserted between segments for clarity
+
+---
+
+## 🧪 Requirements
+
+* MATLAB **R2016b or later**
+* Statistics and Machine Learning Toolbox (for `quantile`)
 
 ---
 
 ## 🧠 Use Cases
 
-* Optical / experimental data analysis
-* Batch preprocessing of measurement datasets
-* Research workflows requiring segmentation + statistics
+* Optical / vision science data analysis
+* Experimental dataset segmentation
+* Batch preprocessing pipelines
+* Research data workflows
 
 ---
 
@@ -155,8 +215,19 @@ Optometry & Vision Science
 ## 🚀 Future Improvements
 
 * GUI (MATLAB App Designer)
+* Data visualization (plots per segment)
 * CSV support
-* Visualization (plots per segment)
-* Export to PDF reports
+* Automated report generation (PDF)
+* Integration with research pipelines
+
+---
+
+## ⭐ Support
+
+If this project helped you:
+
+* Star the repository
+* Share it with others
+* Contribute improvements
 
 ---
