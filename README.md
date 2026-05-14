@@ -146,16 +146,6 @@ matlab-excel-processor/
 
 ---
 
-## 🏗️ Project Setup (Automated)
-
-Run once in MATLAB:
-
-```matlab
-setup_project()
-```
-
----
-
 ## 🚀 Usage
 
 ### Step 1: Setup Project
