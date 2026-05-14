@@ -132,7 +132,6 @@ Each Excel file is processed independently and exported with structured results.
 ```bash
 matlab-excel-processor/
 │
-├── setup_project.m              # Setup script (run once)
 ├── batch_excel_processor.m      # Main processing script
 ├── README.md                    # Documentation
 ├── LICENSE                      # MIT License
