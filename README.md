@@ -150,8 +150,8 @@ matlab-excel-processor/
 
 ### Step 1: Setup Project
 
-```matlab
-setup_project()
+```Manual folder creation
+input and output (on main folder)
 ```
 
 ### Step 2: Add Excel Files
