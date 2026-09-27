@@ -74,7 +74,7 @@ Each Excel file is processed independently and exported with structured results.
                       ▼
 ┌─────────────────────────────────────────────────────────┐
 │  2. DATA CLEANING                                       │
-│     - Replace '.' with ',' (except columns A & B)        │
+│     - Replace '.' with ',' (except columns A & B)       │
 └─────────────────────┬───────────────────────────────────┘
                       │
                       ▼
@@ -88,14 +88,14 @@ Each Excel file is processed independently and exported with structured results.
                       ▼
 ┌─────────────────────────────────────────────────────────┐
 │  4. STATISTICAL ANALYSIS                                │
-│     - Compute Mean, SD, Median, Q1, Q3, IQR              │
+│     - Compute Mean, SD, Median, Q1, Q3, IQR             │
 │     - For each segment                                  │
 │     - For columns T (Left) and AK (Right)               │
 └─────────────────────┬───────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────┐
-│                    OUTPUT FOLDER                         │
+│                    OUTPUT FOLDER                        │
 │     ┌─────────────┬──────────────┬────────────┐         │
 │     │  Original   │   Cleaned    │ Statistics │         │
 │     │    Data     │    Data      │            │         │
